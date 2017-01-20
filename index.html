@@ -1,0 +1,48 @@
+<html lang="en" dir="ltr">
+  <head>
+<meta charset="UTF-8"/>
+  </head>
+  <body>
+    <div id="container" style="z-index:1;position:relative">
+  <div style="z-index:3;position:absolute;width:40%;margin:auto;
+    overflow:hidden;left:0px;right:0px;margin-top:50px;
+    padding: 10px;background: rgba(54, 25, 25, .5);color:white;">
+    <h2>threedna: Simple DNA molecules using three.js.</h2>
+    
+    Usage:<br><br>
+    In order to add the content canvas to an element on your page with
+    id="canvas", containing 50 objects, with specified object and background
+    colors, and with falling objects, use:<br>
+    <pre>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"&gt;&lt;/script&gt;
+&lt;script src="threedna.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const threeDNAConfig = {
+  element: "canvas",
+  noOfObjects: 50,
+  objectColor: 0xF47D20,
+  bgColor: 0x0B0158,
+  rain: true
+};
+var tdna = new ThreeDNA(threeDNAConfig);
+&lt;/script&gt;
+  </pre>
+  Calling ThreeDNA() with a subset of the settings, or without argument, results in default settings.</div>
+<div id="canvas" style="height:800px;width:100%;position:relative;z-index:2">
+</div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+<script src="threedna.js"></script>
+<script>
+const threeDNAConfig = {
+  element: "canvas",
+  noOfObjects: 50,
+  objectColor: 0xF47D20,
+  bgColor: 0x0B0158,
+  rain: true
+};
+var tdna = new ThreeDNA(threeDNAConfig);
+</script>
+
+</html>
