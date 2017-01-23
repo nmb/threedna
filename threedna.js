@@ -83,7 +83,6 @@ function ThreeDNA(config) {
     if(container.clientWidth < 10 || container.clientHeight < 10){
       throw Error("Canvas element too small.");
     }
-    console.log(container, container.clientWidth, container.clientHeight);
 
     camera = new THREE.PerspectiveCamera(fov, container.clientWidth / container.clientHeight, 0.1, 2*cameraDistance);
     // position and point the camera to the center of the scene
@@ -91,7 +90,6 @@ function ThreeDNA(config) {
     camera.lookAt(new THREE.Vector3(0, 0, 0));
     ymax = cameraDistance * Math.tan(0.5*fov/180*Math.PI);
     xmax = ymax*camera.aspect;
-    console.log(xmax, ymax);
 
     // create renderer
     try {
@@ -106,7 +104,6 @@ function ThreeDNA(config) {
 
     webGLRenderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
     webGLRenderer.setSize(container.clientWidth, container.clientHeight);
-    console.log(container.clientWidth, container.clientHeight);
 
     // add subtle ambient lighting
     var ambientLight = new THREE.AmbientLight(0x0c0c0c);
@@ -157,12 +154,9 @@ function ThreeDNA(config) {
 
 
   function onWindowResize(){
-
-    console.log(container.clientWidth, container.clientHeight);
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
     webGLRenderer.setSize( container.clientWidth, container.clientHeight);
-
   }
 
 
@@ -176,7 +170,6 @@ function ThreeDNA(config) {
   // start rendering
   if(webGLRenderer && container){
     window.addEventListener( 'resize', onWindowResize, false );
-    console.log(container.offsetHeight);
     render();
   }
 }
