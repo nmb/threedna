@@ -14,7 +14,8 @@ function ThreeDNA(config) {
     noOfObjects: 100,
     objectColor: 0xF47D20,
     bgColor: 0x0B0158,
-    rain: false
+    rain: false,
+    deleteOnError: false
   }, config);
 
   // some global variables
@@ -97,6 +98,9 @@ function ThreeDNA(config) {
       webGLRenderer = new THREE.WebGLRenderer({ antialias: true } );
     }
     catch(err) {
+      if(config.deleteOnError) {
+        container.parentNode.removeChild(container);
+      }
       throw(err);
     }
 
@@ -161,7 +165,6 @@ function ThreeDNA(config) {
 
   }
 
-  window.addEventListener( 'resize', onWindowResize, false );
 
   // Initialize renderer
   try { 
@@ -172,6 +175,7 @@ function ThreeDNA(config) {
   }
   // start rendering
   if(webGLRenderer && container){
+    window.addEventListener( 'resize', onWindowResize, false );
     console.log(container.offsetHeight);
     render();
   }
