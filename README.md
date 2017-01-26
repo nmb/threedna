@@ -17,3 +17,5 @@ const threeDNAConfig = {
 var tdna = new ThreeDNA(threeDNAConfig);
 ```
 
+### [Demo](https://nmb.github.io/threedna/)
+
