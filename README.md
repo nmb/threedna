@@ -12,7 +12,7 @@ const threeDNAConfig = {
   noOfObjects: 50,
   objectColor: 0xF47D20,
   bgColor: 0x0B0158,
-  rain: true
+  rainSpeed: 0.005
 };
 var tdna = new ThreeDNA(threeDNAConfig);
 ```
