@@ -20,9 +20,10 @@
 const threeDNAConfig = {
   element: "canvas",
   noOfObjects: 50,
-  objectColor: 0xF47D20,
-  bgColor: 0x0B0158,
-  rain: true,
+  objectColor: 0x6D6D6D,
+  bgColor: 0xDBDBDB,
+  rainSpeed: 0.005,
+  maxRotationSpeed: 0.01,
   deleteOnError: false
 };
 var tdna = new ThreeDNA(threeDNAConfig);
@@ -38,10 +39,11 @@ var tdna = new ThreeDNA(threeDNAConfig);
 <script>
 const threeDNAConfig = {
   element: "canvas",
-  noOfObjects: 50,
-  objectColor: 0xF47D20,
-  bgColor: 0x0B0158,
-  rain: true,
+  noOfObjects: 30,
+  objectColor: 0x6D6D6D,
+  bgColor: 0xDBDBDB,
+  rainSpeed: 0.005,
+  maxRotationSpeed: 0.01,
   deleteOnError: false
 };
 var tdna = new ThreeDNA(threeDNAConfig);

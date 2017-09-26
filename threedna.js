@@ -14,7 +14,8 @@ function ThreeDNA(config) {
     noOfObjects: 100,
     objectColor: 0xF47D20,
     bgColor: 0x0B0158,
-    rain: false,
+    rainSpeed: 0.01,
+    maxRotationSpeed: 0.01,
     deleteOnError: false
   }, config);
 
@@ -125,7 +126,7 @@ function ThreeDNA(config) {
       meshes.push(mesh.clone());
       meshes[j].position.set(Math.random()*2*xmax-xmax, Math.random()*2*ymax-ymax, Math.random()*0.5*cameraDistance);
       meshes[j].rotation.set(Math.random()*2*Math.PI, Math.random()*2*Math.PI, Math.random()*2*Math.PI);
-      rotations.push(new THREE.Vector3( Math.random()*0.01, Math.random()*0.01, Math.random()*0.01 ));
+      rotations.push(new THREE.Vector3( Math.random(), Math.random(), Math.random() ).multiplyScalar(config.maxRotationSpeed));
       scene.add( meshes[j]);
     }
 
@@ -142,9 +143,10 @@ function ThreeDNA(config) {
       meshes[k].rotation.x += rotations[k].x;
       meshes[k].rotation.y += rotations[k].y;
       meshes[k].rotation.z += rotations[k].z;
-      if(config.rain){
-      meshes[k].position.y -= 0.01*meshes[k].position.z;
+      if(config.rainSpeed != 0.0){
+      meshes[k].position.y -= config.rainSpeed*meshes[k].position.z;
       if(meshes[k].position.y < -ymax) meshes[k].position.y = ymax;
+      if(meshes[k].position.y > ymax) meshes[k].position.y = -ymax;
       }
 
     }
