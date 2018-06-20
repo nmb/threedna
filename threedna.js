@@ -14,6 +14,7 @@ function ThreeDNA(config) {
     noOfObjects: 100,
     objectColor: 0xF47D20,
     bgColor: 0x0B0158,
+    cameraDistance: 500,
     rainSpeed: 0.01,
     maxRotationSpeed: 0.01,
     deleteOnError: false
@@ -29,7 +30,6 @@ function ThreeDNA(config) {
   var xmax;
   var ymax;
   var fov = 50;
-  var cameraDistance = 1000;
 
   // DNA strand curve
   var StrandCurve = THREE.Curve.create(
@@ -85,11 +85,11 @@ function ThreeDNA(config) {
       throw Error("Canvas element too small.");
     }
 
-    camera = new THREE.PerspectiveCamera(fov, container.clientWidth / container.clientHeight, 0.1, 2*cameraDistance);
+    camera = new THREE.PerspectiveCamera(fov, container.clientWidth / container.clientHeight, 0.1, 2*config.cameraDistance);
     // position and point the camera to the center of the scene
-    camera.position.set (0, 0, cameraDistance);
+    camera.position.set (0, 0, config.cameraDistance);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
-    ymax = cameraDistance * Math.tan(0.5*fov/180*Math.PI);
+    ymax = config.cameraDistance * Math.tan(0.5*fov/180*Math.PI);
     xmax = ymax*camera.aspect;
 
     // create renderer
@@ -124,7 +124,7 @@ function ThreeDNA(config) {
 
     for(var j = 0; j < config.noOfObjects; j++){
       meshes.push(mesh.clone());
-      meshes[j].position.set(Math.random()*2*xmax-xmax, Math.random()*2*ymax-ymax, Math.random()*0.5*cameraDistance);
+      meshes[j].position.set(Math.random()*2*xmax-xmax, Math.random()*2*ymax-ymax, Math.random()*0.5*config.cameraDistance);
       meshes[j].rotation.set(Math.random()*2*Math.PI, Math.random()*2*Math.PI, Math.random()*2*Math.PI);
       rotations.push(new THREE.Vector3( Math.random(), Math.random(), Math.random() ).multiplyScalar(config.maxRotationSpeed));
       scene.add( meshes[j]);
