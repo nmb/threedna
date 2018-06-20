@@ -1,7 +1,7 @@
 /* -----------------------------------------------
 /* Author : Mikael Borg
 /* MIT license: http://opensource.org/licenses/MIT
-/* Demo / Generator : vincentgarreau.com/particles.js
+/* Demo : https://nmb.github.io/threedna/
 /* GitHub : github.com/nmb/threedna
 /* 
 /* ----------------------------------------------- */
