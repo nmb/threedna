@@ -32,13 +32,14 @@ function ThreeDNA(config) {
   var fov = 50;
 
   // DNA strand curve
-  var StrandCurve = THREE.Curve.create(
-      function (scale, turns, phase) {
+  class StrandCurve extends THREE.Curve {
+      constructor(scale, turns, phase) {
+        super();
         this.scale = ( scale === undefined ) ? 1 : scale;
         this.turns = turns;
         this.phase = phase;
-      },
-      function ( t ) { //getPoint: t is between 0-1
+      }
+      getPoint( t ) { //getPoint: t is between 0-1
 
         //var tx = t * 3 - 1.5;
         var tx = Math.cos( this.turns*2 * Math.PI * t + this.phase);
@@ -47,7 +48,7 @@ function ThreeDNA(config) {
 
         return new THREE.Vector3( tx, ty, tz ).multiplyScalar( this.scale );
       }
-      );
+  }
 
   // Define DNAMesh as an extension of a THREE mesh
   function DNAMesh(geometry, material) {
